@@ -1,7 +1,5 @@
 import datetime
 
-import pendulum
-
 from airflow import DAG
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.latest_only import LatestOnlyOperator
@@ -9,10 +7,6 @@ from airflow.utils.trigger_rule import TriggerRule
 
 with DAG(
     dag_id='latest_only_with_trigger',
-    schedule=datetime.timedelta(hours=4),
-    start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
-    catchup=False,
-    tags=['example3'],
 ) as dag:
     latest_only = LatestOnlyOperator(task_id='latest_only')
     task1 = DummyOperator(task_id='task1')
