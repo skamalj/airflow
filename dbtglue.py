@@ -14,5 +14,6 @@ with DAG(
     k = KubernetesPodOperator(
     name="dbt_models",
     image="715267777840.dkr.ecr.ap-south-1.amazonaws.com/hudi_models:v1",
-    service_account_name="dbt-glue"
+    service_account_name="dbt-glue",
+    task_id="dbt_glue_demo"
 )
