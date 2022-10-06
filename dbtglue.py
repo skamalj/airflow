@@ -10,6 +10,7 @@ from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import (
 with DAG(
     dag_id='hudi_with_dbt_glue',
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
+    schedule_interval= '@once'
 ) as dag:
     k = KubernetesPodOperator(
     name="dbt_models",
